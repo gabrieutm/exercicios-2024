@@ -93,5 +93,13 @@ class Scrapper {
     return ['columns' => $columns_name, 'data' => $data];
 
   }
+  /**
+   * teste.
+   */
+  public function scrap(\DOMDocument $dom): array {
+    return [
+      new Paper(123, 'Título do Paper', 'Tipo do Paper', [new Person('Autor do Paper', 'Instituição')]),
+    ];
+  }
 
 }
