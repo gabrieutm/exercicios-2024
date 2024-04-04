@@ -2,8 +2,8 @@
 
 namespace Chuva\Php\WebScrapping;
 
-use Chuva\Php\WebScrapping\Entity\Paper;
-use Chuva\Php\WebScrapping\Entity\Person;
+use DOMDocument;
+use DOMXPath;
 
 /**
  * Does the scrapping of a webpage.
@@ -11,20 +11,43 @@ use Chuva\Php\WebScrapping\Entity\Person;
 class Scrapper {
 
   /**
-   * Loads paper information from the HTML and returns the array with the data.
+   * Scrapes the HTML document and returns an array of data.
    */
-  public function scrap(\DOMDocument $dom): array {
-    return [
-      new Paper(
-        123,
-        'The Nobel Prize in Physiology or Medicine 2023',
-        'Nobel Prize',
-        [
-          new Person('Katalin Karikó', 'Szeged University'),
-          new Person('Drew Weissman', 'University of Pennsylvania'),
-        ]
-      ),
-    ];
+  public function scrap(DOMDocument $dom): array {
+    $xpath = new DOMXPath($dom);
+    $proceedings = $xpath->query('//a[@class="paper-card p-lg bd-gradient-left"]');
+    
+    $data = [];
+    
+    foreach ($proceedings as $proceeding) {
+      $paper = [];
+      
+      $info_id = $xpath->query('.//div[@class="volume-info"]', $proceeding)->item(0)->nodeValue;
+      $info_title = $xpath->query('.//h4[@class="my-xs paper-title"]', $proceeding)->item(0)->nodeValue;
+      $info_type = $xpath->query('.//div[@class="tags mr-sm"]', $proceeding)->item(0)->nodeValue;
+      
+      $paper['ID'] = $info_id;
+      $paper['Title'] = $info_title;
+      $paper['Type'] = $info_type;
+      
+      $authors = [];
+      $author_nodes = $xpath->query('.//div[@class="authors"]/span', $proceeding);
+      foreach ($author_nodes as $author_node) {
+        $authors[] = $author_node->nodeValue;
+      }
+      
+      $institutes = [];
+      $institute_nodes = $xpath->query('.//div[@class="authors"]/span[@title]/@title', $proceeding);
+      foreach ($institute_nodes as $institute_node) {
+        $institutes[] = $institute_node->nodeValue;
+      }
+      
+      $paper['Authors'] = $authors;
+      $paper['Institutes'] = $institutes;
+      
+      $data[] = $paper;
+    }
+    
+    return $data;
   }
-
 }

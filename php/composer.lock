@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0c8115d8c3d420910db90efdc651602",
+    "content-hash": "6bcde244aa0847ba96e3caf186f92626",
     "packages": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -227,16 +227,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.27.0",
+            "version": "1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "86e4d5a4b036f8f0be1464522f4c6b584c452757"
+                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/86e4d5a4b036f8f0be1464522f4c6b584c452757",
-                "reference": "86e4d5a4b036f8f0be1464522f4c6b584c452757",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
+                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
                 "shasum": ""
             },
             "require": {
@@ -268,9 +268,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.27.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.28.0"
             },
-            "time": "2024-03-21T13:14:53+00:00"
+            "time": "2024-04-03T18:51:33+00:00"
         },
         {
             "name": "psalm/phar",
@@ -438,12 +438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "7c6701da272f99e1e547d57f68c142cc3f84e0da"
+                "reference": "82ad715a370d9e0fbcfd428896f615d9ce3a17c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/7c6701da272f99e1e547d57f68c142cc3f84e0da",
-                "reference": "7c6701da272f99e1e547d57f68c142cc3f84e0da",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/82ad715a370d9e0fbcfd428896f615d9ce3a17c5",
+                "reference": "82ad715a370d9e0fbcfd428896f615d9ce3a17c5",
                 "shasum": ""
             },
             "require": {
@@ -511,7 +511,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-03-31T21:45:45+00:00"
+            "time": "2024-04-03T01:56:19+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1461,12 +1461,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit.git",
-                "reference": "31d277c83abda6abf3a580b8648c0335ce57da98"
+                "reference": "ac62e7f08e5b0b526386644911103bb3422c0015"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/31d277c83abda6abf3a580b8648c0335ce57da98",
-                "reference": "31d277c83abda6abf3a580b8648c0335ce57da98",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/ac62e7f08e5b0b526386644911103bb3422c0015",
+                "reference": "ac62e7f08e5b0b526386644911103bb3422c0015",
                 "shasum": ""
             },
             "require": {
@@ -1510,7 +1510,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-22T13:38:40+00:00"
+            "time": "2024-04-03T07:55:48+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -2380,9 +2380,7 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "ext-dom": "*"
-    },
+    "platform": [],
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
