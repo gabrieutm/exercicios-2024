@@ -20,7 +20,6 @@ class Main {
     libxml_use_internal_errors(TRUE);
     $dom->loadHTMLFile(__DIR__ . '/../../assets/origin.html');
     libxml_use_internal_errors(FALSE);
-    
     $scrapper = new Scrapper();
     $result = $scrapper->scrap($dom);
     $columns_name = $result['columns'];
@@ -29,9 +28,6 @@ class Main {
     self::createCsv($data, $columns_name);
   }
 
-  /**
-   * Creates a CSV file from the extracted data.
-   */
   private static function createCsv(array $data, $columns_name): void {
     $filename = 'teste.csv';
     $writer = WriterEntityFactory::createCSVWriter();
