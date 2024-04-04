@@ -41,7 +41,7 @@ class Scrapper {
 
       $info_author = $xpath->query('.//div[@class="authors"]/span', $proceeding);
       foreach ($info_author as $author_info) {
-          $matches_authors_array[] = $author_info->nodeValue;
+          $matches_authors_array[] = rtrim($author_info->nodeValue, ';');
       }
       $matches_authors[] = $matches_authors_array;
 
