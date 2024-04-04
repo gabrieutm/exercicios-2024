@@ -29,7 +29,7 @@ class Main {
   }
 
   /**
-   * Creates the CSV
+   * Creates the CSV.
    */
   private static function createCsv(array $data, $columns_name): void {
     $filename = 'teste.csv';
