@@ -93,6 +93,7 @@ class Scrapper {
 
   }
 
-  return $data;
+  return ['columns' => $columns_name, 'data' => $data];
 
-}}
+}
+}

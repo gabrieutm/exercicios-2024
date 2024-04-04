@@ -22,18 +22,22 @@ class Main {
     libxml_use_internal_errors(false);
     
     $scrapper = new Scrapper();
-    $data = $scrapper->scrap($dom);
+    $result = $scrapper->scrap($dom);
+    $columns_name = $result['columns'];
+    $data = $result['data'];
 
-    self::createCSV($data);
+    self::createCSV($data, $columns_name);
   }
 
   /**
    * Creates a CSV file from the extracted data.
    */
-  private static function createCSV(array $data): void {
+  private static function createCSV(array $data, $columns_name): void {
     $filename = 'teste.csv';
     $writer = WriterEntityFactory::createCSVWriter();
     $writer->openToFile($filename);
+
+    $writer->addRow(WriterEntityFactory::createRowFromArray($columns_name));
 
     foreach ($data as $item) {
       $writer->addRow(WriterEntityFactory::createRowFromArray($item));
