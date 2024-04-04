@@ -28,6 +28,9 @@ class Main {
     self::createCsv($data, $columns_name);
   }
 
+  /**
+   * Creates the CSV
+   */
   private static function createCsv(array $data, $columns_name): void {
     $filename = 'teste.csv';
     $writer = WriterEntityFactory::createCSVWriter();
@@ -44,5 +47,4 @@ class Main {
 
 }
 
-// Executa o processo, teste workflow;
 Main::run();

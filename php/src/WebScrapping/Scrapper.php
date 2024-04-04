@@ -13,10 +13,8 @@ class Scrapper {
   public function scrap(\DOMDocument $dom): array {
     $xpath = new \DOMXPath($dom);
     $proceedings = $xpath->query('//a[@class="paper-card p-lg bd-gradient-left"]');
-    
     $data = [];
-    
-    foreach($proceedings as $proceeding) {
+    foreach ($proceedings as $proceeding) {
 
       $matches_authors_array = [];
       $matches_institutes_array = [];
@@ -47,53 +45,53 @@ class Scrapper {
         $matches_institutes_array[] = $institute_info->nodeValue;
       }
       $matches_institutes[] = $matches_institutes_array;
-  }
-
-  $max_authors_count = 0;
-
-  foreach ($matches_authors as $authors) {
-    $count = count($authors);
-    if ($count > $max_authors_count) {
-      $max_authors_count = $count;
     }
-  }
 
-  $columns_name = ['ID', 'Title', 'Type'];
-  for ($i = 1; $i <= $max_authors_count; $i++) {
-    $columns_name[] = "Author $i";
-    $columns_name[] = "Author $i Institute";
-  }
+    $max_authors_count = 0;
 
-  foreach ($matches_id as $i => $id) {
-    $title = $matches_title[$i];
-    $type = $matches_type[$i];
-    $authors = $matches_authors[$i];
-    $institutes = $matches_institutes[$i];
-    $row = [$id, $title, $type];
+    foreach ($matches_authors as $authors) {
+      $count = count($authors);
+      if ($count > $max_authors_count) {
+        $max_authors_count = $count;
+      }
+    }
 
-    // Adiciona cada autor e seu respectivo instituto ao array de linha
-    for ($j = 0; $j < $max_authors_count; $j++) {
-      if (isset($authors[$j])) {
-        $row[] = $authors[$j];
-        if (isset($institutes[$j])) {
-          $row[] = $institutes[$j];
+    $columns_name = ['ID', 'Title', 'Type'];
+
+    for ($i = 1; $i <= $max_authors_count; $i++) {
+      $columns_name[] = "Author $i";
+      $columns_name[] = "Author $i Institute";
+    }
+
+    foreach ($matches_id as $i => $id) {
+      $title = $matches_title[$i];
+      $type = $matches_type[$i];
+      $authors = $matches_authors[$i];
+      $institutes = $matches_institutes[$i];
+      $row = [$id, $title, $type];
+
+      for ($j = 0; $j < $max_authors_count; $j++) {
+        if (isset($authors[$j])) {
+          $row[] = $authors[$j];
+          if (isset($institutes[$j])) {
+            $row[] = $institutes[$j];
+          }
+          else {
+            $row[] = '';
+          }
         }
         else {
           $row[] = '';
+          $row[] = '';
         }
       }
-      else {
-        $row[] = '';
-        $row[] = '';
-      }
+
+      $data[] = $row;
+
     }
 
-    $data[] = $row;
+    return ['columns' => $columns_name, 'data' => $data];
 
   }
-
-  return ['columns' => $columns_name, 'data' => $data];
-
-}
 
 }
