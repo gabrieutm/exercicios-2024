@@ -17,22 +17,22 @@ class Main {
   public static function run(): void {
     $dom = new \DOMDocument('1.0', 'utf-8');
 
-    libxml_use_internal_errors(true);
+    libxml_use_internal_errors(TRUE);
     $dom->loadHTMLFile(__DIR__ . '/../../assets/origin.html');
-    libxml_use_internal_errors(false);
+    libxml_use_internal_errors(FALSE);
     
     $scrapper = new Scrapper();
     $result = $scrapper->scrap($dom);
     $columns_name = $result['columns'];
     $data = $result['data'];
 
-    self::createCSV($data, $columns_name);
+    self::createCsv($data, $columns_name);
   }
 
   /**
    * Creates a CSV file from the extracted data.
    */
-  private static function createCSV(array $data, $columns_name): void {
+  private static function createCsv(array $data, $columns_name): void {
     $filename = 'teste.csv';
     $writer = WriterEntityFactory::createCSVWriter();
     $writer->openToFile($filename);
@@ -45,7 +45,8 @@ class Main {
 
     $writer->close();
   }
+
 }
 
-// Executa o processo, teste workflow
+// Executa o processo, teste workflow;
 Main::run();
