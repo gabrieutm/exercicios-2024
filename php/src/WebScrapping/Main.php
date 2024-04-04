@@ -35,20 +35,8 @@ class Main {
     $writer = WriterEntityFactory::createCSVWriter();
     $writer->openToFile($filename);
 
-    // Header
-    $header = ['ID', 'Title', 'Type', 'Authors', 'Institutes'];
-    $writer->addRow(WriterEntityFactory::createRowFromArray($header));
-
-    // Data rows
     foreach ($data as $item) {
-      $row = [
-        $item['ID'],
-        $item['Title'],
-        $item['Type'],
-        implode('; ', $item['Authors']),
-        implode('; ', $item['Institutes'])
-      ];
-      $writer->addRow(WriterEntityFactory::createRowFromArray($row));
+      $writer->addRow(WriterEntityFactory::createRowFromArray($item));
     }
 
     $writer->close();
