@@ -25,13 +25,6 @@ class Main {
     $columns_name = $result['columns'];
     $data = $result['data'];
 
-    self::createCsv($data, $columns_name);
-  }
-
-  /**
-   * Creates the CSV.
-   */
-  private static function createCsv(array $data, $columns_name): void {
     $filename = 'teste.csv';
     $writer = WriterEntityFactory::createCSVWriter();
     $writer->openToFile($filename);
