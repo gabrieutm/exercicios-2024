@@ -4,10 +4,10 @@ namespace Chuva\Php\WebScrapping;
 
 require_once 'vendor/autoload.php';
 
-use OpenSpout\Writer\Common\Creator\WriterEntityFactory;
-use OpenSpout\Writer\Common\Creator\Style\StyleBuilder;
 use OpenSpout\Common\Entity\Style\CellAlignment;
 use OpenSpout\Common\Entity\Style\Color;
+use OpenSpout\Writer\Common\Creator\Style\StyleBuilder;
+use OpenSpout\Writer\Common\Creator\WriterEntityFactory;
 
 /**
  * Runner for the Webscrapping exercice.
@@ -33,22 +33,21 @@ class Main {
     $writer->openToFile($filename);
 
     $style_columns = (new StyleBuilder())
-                    ->setFontBold()
-                    ->setFontName('Arial')
-                    ->setFontSize(14)
-                    ->setFontColor(Color::WHITE)
-                    ->setCellAlignment(CellAlignment::CENTER)
-                    ->setBackgroundColor(Color::BLUE)
-                    ->build();
-    
+      ->setFontBold()
+      ->setFontName('Arial')
+      ->setFontSize(14)
+      ->setFontColor(Color::WHITE)
+      ->setCellAlignment(CellAlignment::CENTER)
+      ->setBackgroundColor(Color::BLUE)
+      ->build();
     $style_items = (new StyleBuilder())
-                    ->setFontName('Arial')
-                    ->setFontSize(10)
-                    ->setFontColor(Color::BLACK)
-                    ->setShouldWrapText(true)
-                    ->setCellAlignment(CellAlignment::LEFT)
-                    ->setBackgroundColor(Color::WHITE)
-                    ->build();
+      ->setFontName('Arial')
+      ->setFontSize(10)
+      ->setFontColor(Color::BLACK)
+      ->setShouldWrapText(TRUE)
+      ->setCellAlignment(CellAlignment::LEFT)
+      ->setBackgroundColor(Color::WHITE)
+      ->build();
 
     $writer->addRow(WriterEntityFactory::createRowFromArray($columns_name, $style_columns));
 
