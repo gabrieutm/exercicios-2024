@@ -14,13 +14,13 @@ class Scrapper {
     $xpath = new \DOMXPath($dom);
     $proceedings = $xpath->query('//a[@class="paper-card p-lg bd-gradient-left"]');
     $data = [];
+    $matches_id = [];
+    $matches_title = [];
+    $matches_type = [];
+    $matches_authors = [];
+    $matches_institutes = [];
     foreach ($proceedings as $proceeding) {
 
-      $matches_id = [];
-      $matches_title = [];
-      $matches_type = [];
-      $matches_authors = [];
-      $matches_institutes = [];
       $matches_authors_array = [];
       $matches_institutes_array = [];
 
