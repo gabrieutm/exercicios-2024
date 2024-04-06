@@ -16,33 +16,48 @@ class Scrapper {
     $data = [];
     foreach ($proceedings as $proceeding) {
 
+      $matches_id = [];
+      $matches_title = [];
+      $matches_type = [];
+      $matches_authors = [];
+      $matches_institutes = [];
       $matches_authors_array = [];
       $matches_institutes_array = [];
 
       $info_id = $xpath->query('.//div[@class="volume-info"]', $proceeding);
-      foreach ($info_id as $id_info) {
-        $matches_id[] = $id_info->nodeValue;
+      if ($info_id->length > 0) {
+        foreach ($info_id as $id_info) {
+          $matches_id[] = $id_info->nodeValue;
+        }
       }
 
       $info_title = $xpath->query('.//h4[@class="my-xs paper-title"]', $proceeding);
-      foreach ($info_title as $title_info) {
-        $matches_title[] = $title_info->nodeValue;
+      if ($info_title->length > 0) {
+        foreach ($info_title as $title_info) {
+          $matches_title[] = $title_info->nodeValue;
+        }
       }
 
       $info_type = $xpath->query('.//div[@class="tags mr-sm"]', $proceeding);
-      foreach ($info_type as $type_info) {
-        $matches_type[] = $type_info->nodeValue;
+      if ($info_type->length > 0) {
+        foreach ($info_type as $type_info) {
+          $matches_type[] = $type_info->nodeValue;
+        }
       }
 
       $info_author = $xpath->query('.//div[@class="authors"]/span', $proceeding);
-      foreach ($info_author as $author_info) {
-        $matches_authors_array[] = rtrim($author_info->nodeValue, ';');
+      if ($info_author->length > 0) {
+        foreach ($info_author as $author_info) {
+          $matches_authors_array[] = rtrim($author_info->nodeValue, ';');
+        }
       }
       $matches_authors[] = $matches_authors_array;
 
       $info_institute = $xpath->query('.//div[@class="authors"]/span[@title]/@title', $proceeding);
-      foreach ($info_institute as $institute_info) {
-        $matches_institutes_array[] = $institute_info->nodeValue;
+      if ($info_institute->length > 0) {
+        foreach ($info_institute as $institute_info) {
+          $matches_institutes_array[] = $institute_info->nodeValue;
+        }
       }
       $matches_institutes[] = $matches_institutes_array;
     }
